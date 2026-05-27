@@ -1,0 +1,27 @@
+# OS
+.DS_Store
+Thumbs.db
+
+# Editor
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# Node
+node_modules/
+npm-debug.log
+
+# Secrets, never commit these
+.env
+.env.*
+*.key
+*.pem
+credentials.json
+*_secret*
+*_token*
+
+# Local AI runtime state
+.claude/cache/
+.claude/logs/
+*.local.md
