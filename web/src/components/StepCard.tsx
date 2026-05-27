@@ -2,11 +2,12 @@ import ReactMarkdown from 'react-markdown'
 import type { Milestone, Step } from '../content/types'
 import { CopyableCommand } from './CopyableCommand'
 import { ChecklistItem } from './ChecklistItem'
+import { MarkdownCodeBlock } from './MarkdownCodeBlock'
 
 export function StepCard({ milestone, step }: { milestone: Milestone; step: Step }) {
   const stepKey = `${milestone.id}/${step.id}`
   return (
-    <article className="card p-6 sm:p-8">
+    <article className="card p-6 sm:p-8 overflow-hidden">
       <div className="flex items-baseline gap-3 mb-2">
         <span className="text-xs font-medium uppercase tracking-wide text-accent">
           {milestone.title}
@@ -16,8 +17,14 @@ export function StepCard({ milestone, step }: { milestone: Milestone; step: Step
         )}
       </div>
       <h1 className="text-2xl sm:text-3xl font-semibold tracking-tight mb-4">{step.title}</h1>
-      <div className="prose prose-stone max-w-none prose-headings:font-semibold prose-headings:text-ink prose-strong:text-ink prose-code:bg-bg-subtle prose-code:rounded prose-code:px-1.5 prose-code:py-0.5 prose-code:font-normal prose-pre:bg-transparent prose-pre:p-0 prose-pre:m-0">
-        <ReactMarkdown>{step.body}</ReactMarkdown>
+      <div className="prose prose-stone max-w-none prose-headings:font-semibold prose-headings:text-ink prose-strong:text-ink prose-code:bg-bg-subtle prose-code:rounded prose-code:px-1.5 prose-code:py-0.5 prose-code:font-normal prose-code:before:content-none prose-code:after:content-none prose-pre:bg-transparent prose-pre:p-0 prose-pre:m-0 prose-pre:text-ink">
+        <ReactMarkdown
+          components={{
+            pre: ({ children }) => <MarkdownCodeBlock>{children}</MarkdownCodeBlock>,
+          }}
+        >
+          {step.body}
+        </ReactMarkdown>
       </div>
       {step.commands?.map((cmd, i) => (
         <CopyableCommand key={i} command={cmd} />

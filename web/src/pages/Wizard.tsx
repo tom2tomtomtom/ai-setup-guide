@@ -85,7 +85,7 @@ export function Wizard() {
       <div className="flex">
         <ProgressSidebar />
         <div className="flex-1 min-w-0">
-          <div className="mx-auto max-w-3xl px-4 sm:px-6 lg:px-8 py-8 grid lg:grid-cols-[1fr,280px] gap-6">
+          <div className="mx-auto max-w-5xl px-4 sm:px-6 lg:px-8 py-8 grid xl:grid-cols-[minmax(0,1fr),260px] gap-6">
             <div className="min-w-0">
               {/* breadcrumb */}
               <div className="text-sm text-ink-muted mb-2">
@@ -141,7 +141,7 @@ export function Wizard() {
             </div>
 
             {/* Stuck panel */}
-            <aside className="lg:sticky lg:top-20 lg:self-start">
+            <aside className="xl:sticky xl:top-20 xl:self-start min-w-0">
               <StuckPanel step={step} milestoneTitle={milestone.title} />
               <div className="mt-4 text-xs text-ink-subtle px-2">
                 Tip: progress lives only in your browser. Bookmark this page to resume later.
