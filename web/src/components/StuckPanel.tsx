@@ -1,12 +1,14 @@
 import { useState } from 'react'
-import { LifeBuoy, ChevronDown, Copy, Check } from 'lucide-react'
+import { LifeBuoy, ChevronDown, Copy, Check, MessageSquare } from 'lucide-react'
 import { useProgress } from '../state/useProgress'
-import type { Step } from '../content/types'
+import type { Milestone, Step } from '../content/types'
 import { cn } from '../lib/cn'
+import { generateHelpPrompt } from '../lib/helpPrompt'
 
-export function StuckPanel({ step, milestoneTitle }: { step: Step; milestoneTitle: string }) {
+export function StuckPanel({ step, milestone }: { step: Step; milestone: Milestone }) {
   const [open, setOpen] = useState(false)
   const [copied, setCopied] = useState(false)
+  const [showPrompt, setShowPrompt] = useState(false)
   const profile = useProgress((s) => s.profile)
 
   const errors: { match: string; fix: string }[] = []
@@ -15,18 +17,14 @@ export function StuckPanel({ step, milestoneTitle }: { step: Step; milestoneTitl
   }
   for (const e of step.commonErrors ?? []) errors.push(e)
 
-  const helpPrompt = `I'm following Tom Hyde's "AI Setup Guide" and I'm stuck on the "${step.title}" step inside the "${milestoneTitle}" milestone. My OS is ${profile.os ?? 'unknown'}. Here is what was supposed to happen and what actually happened:
-
-[paste the command you ran]
-[paste the error message you got]
-
-What is the most likely cause and the fastest fix? If you need more info, ask me one specific question.`
+  const helpPrompt = generateHelpPrompt(milestone, step, profile)
+  const hasCommands = (step.commands?.length ?? 0) > 0
 
   const onCopy = async () => {
     try {
       await navigator.clipboard.writeText(helpPrompt)
       setCopied(true)
-      window.setTimeout(() => setCopied(false), 1800)
+      window.setTimeout(() => setCopied(false), 2400)
     } catch {
       // ignore
     }
@@ -40,7 +38,7 @@ What is the most likely cause and the fastest fix? If you need more info, ask me
       >
         <span className="flex items-center gap-2 text-sm font-medium text-ink">
           <LifeBuoy size={16} className="text-accent" />
-          Stuck?
+          Stuck on this step?
         </span>
         <ChevronDown
           size={16}
@@ -48,35 +46,53 @@ What is the most likely cause and the fastest fix? If you need more info, ask me
         />
       </button>
       {open && (
-        <div className="px-4 pb-4 pt-2 border-t border-border space-y-4">
+        <div className="px-4 pb-4 pt-2 border-t border-border space-y-5">
           {errors.length > 0 && (
             <div>
               <div className="text-xs font-medium uppercase tracking-wide text-ink-muted mb-2">
-                Most likely causes
+                Quick fixes for this step
               </div>
               <ul className="space-y-2">
                 {errors.map((e, i) => (
-                  <li key={i} className="text-sm text-ink">
-                    <span className="font-mono text-xs bg-bg-subtle px-1.5 py-0.5 rounded text-ink-muted">
+                  <li key={i} className="text-sm">
+                    <div className="font-mono text-xs bg-bg-subtle px-1.5 py-0.5 rounded text-ink-muted inline-block mb-1">
                       {e.match}
-                    </span>
-                    <span className="block mt-1 text-ink-muted">{e.fix}</span>
+                    </div>
+                    <div className="text-ink-muted">{e.fix}</div>
                   </li>
                 ))}
               </ul>
             </div>
           )}
+
           <div>
-            <div className="text-xs font-medium uppercase tracking-wide text-ink-muted mb-2">
-              Or, ask Claude directly
+            <div className="text-xs font-medium uppercase tracking-wide text-ink-muted mb-2 flex items-center gap-1.5">
+              <MessageSquare size={12} />
+              Ask Claude with full context
             </div>
-            <p className="text-sm text-ink-muted mb-2">
-              Copy this prompt, paste it into Claude (web or desktop), and follow what it says.
+            <p className="text-sm text-ink-muted mb-3">
+              {hasCommands
+                ? "This prompt tells Claude what step you're on, what you tried, and asks Claude to interview you instead of guessing. Paste it into Claude (web, desktop, or Claude Code)."
+                : "This prompt tells Claude what concept is confusing you and asks Claude to interview you first, then explain with one concrete example. Paste it into Claude."}
             </p>
-            <button onClick={onCopy} className={cn('btn-secondary w-full justify-center text-sm py-2')}>
+            <button
+              onClick={onCopy}
+              className={cn('btn-primary w-full justify-center text-sm py-2.5 mb-2', copied && 'bg-ok hover:bg-ok')}
+            >
               {copied ? <Check size={14} /> : <Copy size={14} />}
-              {copied ? 'Copied prompt' : 'Copy help prompt'}
+              {copied ? 'Copied. Now paste into Claude.' : 'Copy the help prompt'}
             </button>
+            <button
+              onClick={() => setShowPrompt((s) => !s)}
+              className="btn-ghost w-full justify-center text-xs"
+            >
+              {showPrompt ? 'Hide the prompt' : 'Show the prompt before copying'}
+            </button>
+            {showPrompt && (
+              <pre className="mt-3 p-3 bg-bg-subtle rounded-xl text-xs font-mono whitespace-pre-wrap text-ink max-h-72 overflow-y-auto">
+                {helpPrompt}
+              </pre>
+            )}
           </div>
         </div>
       )}

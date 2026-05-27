@@ -142,7 +142,7 @@ export function Wizard() {
 
             {/* Stuck panel */}
             <aside className="xl:sticky xl:top-20 xl:self-start min-w-0">
-              <StuckPanel step={step} milestoneTitle={milestone.title} />
+              <StuckPanel step={step} milestone={milestone} />
               <div className="mt-4 text-xs text-ink-subtle px-2">
                 Tip: progress lives only in your browser. Bookmark this page to resume later.
               </div>
