@@ -12,6 +12,20 @@ audience: anyone setting up AI from scratch through to full operator level
 >
 > This page is the source. For a friendly guided walkthrough that holds your hand step by step, go to **[setup.aiden.services](https://setup.aiden.services)** instead. Free, no signup, finishes in an evening.
 
+## Why Claude is my preferred AI OS
+
+This guide is Claude-only on purpose. Five reasons.
+
+1. **The writing is sharper.** Less hedging, less corporate, fewer apologies. That matters when every piece of output goes to a client.
+2. **Projects, Skills, and Connectors compose into a real operator stack.** Other tools have features. Claude has primitives that combine. A Project per client, a Skill per repeated task, Connectors that read my actual world.
+3. **Claude Code turns the terminal into an agent.** It writes code, runs shell, edits files, orchestrates sub-agents, calls connectors. My entire engineering practice runs through it.
+4. **Memory and Projects mean I never re-explain who I am.** Six months of context accumulates. By month three, sessions feel like talking to a colleague who has read your notes.
+5. **Anthropic ships in the right places.** Computer Use, Coworker, Skills, Connectors, Artifacts. Each release extended the operator surface, not the chatbot surface.
+
+I run my whole business on Claude. My consultancy, AIDEN, my daily writing, my code, my BD pipeline. This guide reflects that. I'm not going to teach you something I don't use myself.
+
+If you're already committed to a different tool, that's fine. OpenAI and Google both have their own onboarding. Come back when you want to climb into operator mode.
+
 A complete guide for setting up AI the way I do, written so a new user can start at zero and climb the ladder to where I am now. Skip nothing. Each level assumes the previous one is in place. By the end you should have a stack that does real work for you, not a chat window you forget about.
 
 If you read one section to know whether this is worth your time, read Level 0. Everything else is implementation.

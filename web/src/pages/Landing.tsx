@@ -62,6 +62,43 @@ export function Landing() {
         />
       </section>
 
+      <section className="mx-auto max-w-3xl px-4 sm:px-6 lg:px-8 pb-16">
+        <div className="card p-6 sm:p-8">
+          <h2 className="text-2xl font-semibold tracking-tight mb-1">Why Claude is my preferred AI OS</h2>
+          <p className="text-sm text-ink-subtle mb-5">
+            This guide is Claude-only on purpose. Five reasons.
+          </p>
+          <ol className="space-y-4 text-ink-muted leading-relaxed">
+            <li>
+              <span className="text-ink font-medium">The writing is sharper.</span>{' '}
+              Less hedging, less corporate, fewer apologies. That matters when every piece of output goes to a client.
+            </li>
+            <li>
+              <span className="text-ink font-medium">Projects, Skills, and Connectors compose into a real operator stack.</span>{' '}
+              Other tools have features. Claude has primitives that combine. A Project for each client, a Skill for each repeated task, Connectors that read my actual world. The whole is more than the parts.
+            </li>
+            <li>
+              <span className="text-ink font-medium">Claude Code turns the terminal into an agent.</span>{' '}
+              It writes code, runs shell, edits files, orchestrates sub-agents, calls connectors. My entire engineering practice runs through it. No other CLI is even close.
+            </li>
+            <li>
+              <span className="text-ink font-medium">Memory and Projects mean I never re-explain who I am.</span>{' '}
+              Six months of context accumulates. By month three, sessions feel like talking to a colleague who has read your notes.
+            </li>
+            <li>
+              <span className="text-ink font-medium">Anthropic ships in the right places.</span>{' '}
+              Computer Use, Coworker, Skills, Connectors, Artifacts. Each release extended the operator surface, not the chatbot surface. The pace is matched to how I actually want to use it.
+            </li>
+          </ol>
+          <p className="mt-6 text-ink-muted leading-relaxed">
+            I run my whole business on Claude. My consultancy. AIDEN, the platform I sell. My daily writing. My code. My BD pipeline. This guide reflects that. I'm not going to teach you something I don't use myself.
+          </p>
+          <p className="mt-3 text-ink-muted leading-relaxed">
+            If you're already committed to a different tool, that's fine. OpenAI and Google both have their own onboarding. Come back when you want to climb into operator mode.
+          </p>
+        </div>
+      </section>
+
       <section className="mx-auto max-w-3xl px-4 sm:px-6 lg:px-8 pb-20 text-center">
         <p className="text-sm text-ink-subtle">
           The full source is open on{' '}
