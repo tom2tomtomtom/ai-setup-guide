@@ -21,7 +21,7 @@ Plus a template `CLAUDE.md.template` at this folder's root.
 
 - **8 review agents**: `art-director`, `biz-ceo`, `biz-cfo`, `biz-cmo`, `biz-cpo`, `biz-cro`, `biz-analyst`, `strategist`. Use these for multi-perspective critique of products, copy, and strategy.
 - **57 slash commands**: the `/build`, `/spec`, `/execute`, `/analyze` workflow plus 22 vault commands, the creative pipeline (`/brain-chat`, `/creative-strategy`, `/full-campaign`, `/culture-scan`), image and video commands, and operator shortcuts (`/setup`, `/help`, `/plan`).
-- **88 skills**: the working library minus proprietary, client-specific, and plugin-managed items. Covers vault operations, creative strategy, coding workflows, framework patterns, design systems, deployment, debugging, and meta-tools.
+- **89 skills**: the working library minus proprietary, client-specific, and plugin-managed items. Covers vault operations, creative strategy, coding workflows, framework patterns, design systems, deployment, debugging, and meta-tools.
 
 ## Plugin-managed skills (install separately)
 
@@ -40,7 +40,7 @@ The following skills were removed from the public bundle because they reference 
 
 - **AIDEN-specific**: `aiden-auth-debug`, `aiden-design-system`, `aiden-pptx`
 - **Client-specific**: `lego-brand-guidelines`, `lego-brand-check`, `monigle-pptx`, `vscope-writer`, `streem-to-tracker`, `altshift-reverse-brief`, `clio-build`
-- **Redbaez personal products**: `redbaez-warm-design-system`, `deal-review`, `brief-sharpener`, `teaching-brain`, `phantom-brain`
+- **Redbaez personal products**: `redbaez-warm-design-system`, `brief-sharpener`, `teaching-brain`, `phantom-brain`
 - **Has personal API keys**: `facebook-marketing-api`
 - **Calls proprietary endpoints**: `brain-chat` (hardcoded to Tom's AIDEN Brain V2 API)
 
