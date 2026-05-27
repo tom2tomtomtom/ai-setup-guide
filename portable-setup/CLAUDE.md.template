@@ -1,4 +1,4 @@
-# CLAUDE.md, your AI work partner brief
+# CLAUDE.md: your AI work partner brief
 
 This file is read by every AI agent that opens this directory. Fill in the [brackets] with your details. Keep it tight. Re-read and revise it every quarter.
 

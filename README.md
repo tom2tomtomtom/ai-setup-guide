@@ -30,7 +30,7 @@ Most people stop at Level 1 and call it AI usage. Level 4 is where AI actually c
 
 > **Two fast lanes if you don't want to read the whole guide:**
 > - **Just want a win today?** Skip to **Day 1** below. 30 minutes in your browser. No installs, no terminal, no money.
-> - **Already comfortable with software?** Do the **Quickstart**, then jump to the **Self-Onboarding Prompt** at the end. The AI will interview you, sweep your Gmail/Calendar/Drive, set up your vault, and generate a personalised 30/60/90 plan while you read the rest.
+> - **Already comfortable with software?** Do the **Quickstart**: then jump to the **Self-Onboarding Prompt** at the end. The AI will interview you, sweep your Gmail/Calendar/Drive, set up your vault, and generate a personalised 30/60/90 plan while you read the rest.
 
 ---
 
@@ -46,11 +46,11 @@ The AI that remembers what you agreed last week beats the smarter one that start
 
 Do not collect AIs. Collect jobs, then assign one AI to each job. I run eight systems today (full list in Level 4) and each one has a clearly different role. Yours will start with one. Maybe two by month three. When two systems start doing the same job, one of them gets killed. Hoarding tools is the most common mistake at every level.
 
-### Stop chatting, start systematizing
+### Stop chatting: start systematizing
 
 A conversation is a single use. A system is reusable. Every time you find yourself typing the same context into a chat for the third time, that context belongs in a file the AI reads automatically. The goal is to build infrastructure, not to have better conversations.
 
-### Build, then sell
+### Build: then sell
 
 This rule sits underneath everything else I do. Ship a small working thing first. Show it. Refine. Most of my client work comes from demos, not pitches. The mindset transfers to your own setup. Build a small workflow, use it, then expand. Do not architect the dream stack on paper before you have anything working.
 
@@ -204,18 +204,18 @@ Reusable instruction sets Claude can load on demand. Each skill is a small file 
 
 Examples from my stack:
 
-- `vault-today`, builds a prioritised daily plan
-- `brief-sharpener`, exposes gaps in a brief before kickoff
-- `pr-campaign`, runs end-to-end PR outreach
-- `caveman-review`, ultra-compressed code review comments
+- `vault-today`: builds a prioritised daily plan
+- `brief-sharpener`: exposes gaps in a brief before kickoff
+- `pr-campaign`: runs end-to-end PR outreach
+- `caveman-review`: ultra-compressed code review comments
 
 Skills live mostly in Claude Code today (where I have 200+ installed). The web is starting to support them. Build a skill the third time you do a task by hand.
 
 **Three skills to install or write in your first month**:
 
-1. **Email-in-your-voice**, takes a forwarded email plus light context, drafts a reply that sounds like you, follows your never-do rules
-2. **Meeting-to-actions**, takes meeting notes or a transcript, returns a one-paragraph summary plus 3-5 specific action items with owners and dates
-3. **Daily plan**, reads your calendar, today's emails, and your priorities note, returns a focused plan for the day
+1. **Email-in-your-voice**: takes a forwarded email plus light context, drafts a reply that sounds like you, follows your never-do rules
+2. **Meeting-to-actions**: takes meeting notes or a transcript, returns a one-paragraph summary plus 3-5 specific action items with owners and dates
+3. **Daily plan**: reads your calendar, today's emails, and your priorities note, returns a focused plan for the day
 
 Each one saves about 20 minutes a day. Write them after you've done the task by hand five times. By then you know what good looks like.
 
@@ -442,10 +442,10 @@ A working AI agent in your terminal with access to your inbox, calendar, and doc
 
 If you don't know which YouTube channels to trust, start with these:
 
-- **Fireship**, tight 2-5 minute explainers on any tech concept
-- **NetworkChuck**, terminal, VPS, networking, automation, accessible style
-- **Theo**, modern web dev, AI tools, opinionated takes
-- **David Bombal**, networking and terminal deep dives
+- **Fireship**: tight 2-5 minute explainers on any tech concept
+- **NetworkChuck**: terminal, VPS, networking, automation, accessible style
+- **Theo**: modern web dev, AI tools, opinionated takes
+- **David Bombal**: networking and terminal deep dives
 - **Linking Your Thinking**, Obsidian and personal knowledge systems
 
 Throughout this guide, where I say "search YouTube: [query]", run the query and pick a video from one of these channels first.
@@ -556,7 +556,7 @@ Make the vault a git repo and push it to GitHub. From day one. The git log becom
 > Search YouTube: `git and GitHub for beginners 2026` (Fireship has a 100-second version, then a longer tutorial)
 > The Self-Onboarding Prompt at the end of this guide handles git setup for you, but understanding the basics matters.
 
-### Multiple AIs, one per job
+### Multiple AIs: one per job
 
 By month 3 you should have at least three AIs working different jobs. Mine today:
 
@@ -697,7 +697,7 @@ My most-used sub-agents:
 
 Rule of thumb: delegate work that has a clear input and clear output. Do not delegate judgement calls where you cannot inspect the reasoning.
 
-### Automation (cron, webhooks)
+### Automation (cron: webhooks)
 
 Once skills and agents work, the next layer is automation. The agent runs without you triggering it.
 
@@ -1035,7 +1035,7 @@ These are the skills I actually run, grouped by domain. Use them as inspiration.
 | `production-debugging-playbook` | Fix production fast without deploying code |
 | `browser-devtools-for-ui-debugging` | Exhaustive DevTools reference for UI bugs |
 
-#### Testing, performance, security
+#### Testing: performance, security
 
 | Skill | What it does |
 |---|---|
@@ -1245,7 +1245,7 @@ Adapted from Andrej Karpathy's work, condensed into my CLAUDE.md.
 
 Already covered, but worth repeating in the coding context. Use Claude Code for one project, Cursor for another, Codex for another. Do not flip between three on the same file. The context costs of switching are higher than people admit.
 
-### Plan, spec, execute
+### Plan: spec, execute
 
 Before any non-trivial build, I write a spec in the vault. Sections: soul, user, principles, IA, files to change, verification gates. The dev (Claude Code, Codex, or a human) reads the spec, then builds against it. The build does not start until the spec is committed.
 
@@ -1258,7 +1258,7 @@ Pattern:
 3. `/execute` to ship it
 4. `/analyze` to find what is missing
 
-### Vault first, code second
+### Vault first: code second
 
 Every build starts with a vault note. The note captures intent before code captures implementation. Future-you reads the note in six months and remembers why. Future-AI reads the note and inherits the context.
 
@@ -1364,7 +1364,7 @@ Anything where the cost of a wrong action exceeds the time savings. Examples:
 - Database migrations in production
 - Anything client-facing without a review step
 
-### Drafts, never sends
+### Drafts: never sends
 
 Hermes can send emails directly. I never let it. Every email goes to Gmail Drafts. I open Gmail, review, hit send myself. This is non-negotiable. The risk of an AI agent autonomously sending an email to a client far exceeds the time savings.
 

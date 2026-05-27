@@ -4,60 +4,61 @@ A packaged version of Tom Hyde's Claude Code environment, ready to clone onto yo
 
 This is the "skip the climb, copy my exact setup" path for ambitious readers. Use it if you want to skip months of trial and error and start from a battle-tested configuration.
 
-## What's in it
+## What's in this folder
 
-- `settings.json` with 12 enabled plugins, 4 hooks, sensible defaults
-- 4 production hook scripts:
-  - `block-dangerous`, prevents `rm -rf`, force pushes to main, and other irreversible operations without confirmation
-  - `env-leak-guard`, scans for secrets being printed, logged, or committed
-  - `check-ts-after-edit`, runs the TypeScript compiler after edits to `.ts` files
-  - `post-compact-context`, restores critical context after a session compaction
-- 98 skills (personal and client-specific skills excluded for portability)
-- 58 slash commands
-- 8 review agents (art-director, biz-ceo / cfo / cmo / cpo / cro, biz-analyst, strategist)
-- Template `CLAUDE.md` you fill in with your own stack and vault details
-- `.mcp.json` with `gws` and `serena` connectors
+The full bundle lives directly in `contents/`:
 
-All paths in the bundle are scrubbed to placeholders. The recipient substitutes their own during setup.
+```
+contents/
+├── agents/     (8 review agents)
+├── commands/   (58 slash commands)
+└── skills/     (95 skills)
+```
 
-## Excluded from the bundle (and why)
+Plus a template `CLAUDE.md.template` at this folder's root.
 
-Some skills are excluded because they reference specific clients, AIDEN-proprietary work, or have personal API keys embedded:
+## What's included
+
+- **8 review agents**: `art-director`, `biz-ceo`, `biz-cfo`, `biz-cmo`, `biz-cpo`, `biz-cro`, `biz-analyst`, `strategist`. Use these for multi-perspective critique of products, copy, and strategy.
+- **58 slash commands**: the `/build`, `/spec`, `/execute`, `/analyze` workflow plus 22 vault commands, the creative pipeline (`/brain-chat`, `/creative-strategy`, `/full-campaign`, `/culture-scan`), image and video commands, and operator shortcuts (`/setup`, `/help`, `/plan`).
+- **95 skills**: the working library minus the proprietary and client-specific items (see exclusion list below). Covers vault operations, creative strategy, coding workflows, framework patterns, design systems, deployment, debugging, and meta-tools.
+- **Template `CLAUDE.md`**: fill-in-the-blanks starter for your own vault root.
+
+## Excluded (and why)
+
+The following skills were removed from the public bundle because they reference proprietary work, specific clients, or have personal credentials embedded:
 
 - **AIDEN-specific**: `aiden-auth-debug`, `aiden-design-system`, `aiden-pptx`
-- **Client-specific**: `lego-brand-guidelines`, `monigle-pptx`, `vscope-writer`, `streem-to-tracker`
-- **Redbaez personal products**: `redbaez-warm-design-system`, `deal-review`, `brief-sharpener`, `teaching-brain`
-- **Has API keys embedded**: `facebook-marketing-api`
+- **Client-specific**: `lego-brand-guidelines`, `lego-brand-check`, `monigle-pptx`, `vscope-writer`, `streem-to-tracker`, `altshift-reverse-brief`, `clio-build`
+- **Redbaez personal products**: `redbaez-warm-design-system`, `deal-review`, `brief-sharpener`, `teaching-brain`, `phantom-brain`
+- **Has personal API keys**: `facebook-marketing-api`
 
 If you adapt this setup, build your own equivalents for any of these you actually need.
 
-## Distribution
+## Installation
 
-**Bundle** (`tommy-claude-bundle.tar.gz`, ~8 MB)
-- Drive link: https://drive.google.com/file/d/1fWN0Uu8BGjVoduxY98nYlQuCaNuX3_wG/view?usp=sharing
-- File ID: `1fWN0Uu8BGjVoduxY98nYlQuCaNuX3_wG`
-
-**Super prompt** (companion file for the bundle)
-- Drive link: https://drive.google.com/file/d/1zhz1kmsDpKF0B_paKnAHlCsW_t9YRCCb/view?usp=sharing
-- File ID: `1zhz1kmsDpKF0B_paKnAHlCsW_t9YRCCb`
-
-## Recipient flow
-
-1. Complete the **Quickstart** in the main README first (install Node.js and Claude Code)
-2. Save the bundle to `~/Downloads/tommy-claude-bundle.tar.gz`
-3. Open a fresh Claude Code session
-4. Paste the **super prompt** (downloaded from the Drive link above) as your first message
-5. Answer 5 questions: deploy platform, frontend stack, database, vault path, vault name
-6. Claude extracts the bundle, scrubs the placeholders to your values, writes the configs
-7. Launch a new shell, run `claude`, and the plugins auto-install
-8. From here, follow the main guide level by level
+1. Complete the **Quickstart** in the main `README.md` at the repo root (install Node.js and Claude Code).
+2. Copy the contents of `contents/` into your Claude Code config:
+   ```bash
+   mkdir -p ~/.claude/agents ~/.claude/commands ~/.claude/skills
+   cp -r contents/agents/*    ~/.claude/agents/
+   cp -r contents/commands/*  ~/.claude/commands/
+   cp -r contents/skills/*    ~/.claude/skills/
+   ```
+3. Copy the CLAUDE.md template into your vault root and fill it in:
+   ```bash
+   cp CLAUDE.md.template ~/your-vault/CLAUDE.md
+   # then edit with your name, business, voice rules, never-dos
+   ```
+4. Launch a fresh shell, run `claude`, and the new commands and skills are available immediately.
 
 ## What you'll have after this
 
-A Claude Code environment that matches Tom's, minus the personal and client-specific skills. From there you'll add your own CLAUDE.md, your own vault, and your own skills as you climb the levels.
+A Claude Code environment matching Tom's working stack, minus the personal and client-specific items. From there you'll add your own CLAUDE.md, your own vault, and your own skills as you climb the levels in the main guide.
 
 ## Caveats
 
-- **This is a snapshot**, not a maintained product. Skills and plugins evolve. Use it as a starting state, not a final state.
-- **Your CLAUDE.md is yours**. The template gives you the structure but the content has to be your real voice, business, and never-dos.
-- **You still need to learn the underlying concepts**. The bundle gives you the configuration, not the mental model. Read the main guide alongside using it.
+- **This is a snapshot, not a maintained product.** Skills and commands evolve. Use it as a starting state, not a final state.
+- **Your CLAUDE.md is yours.** The template gives you the structure but the content has to be your real voice, business, and never-dos.
+- **You still need to learn the underlying concepts.** The bundle gives you configuration, not the mental model. Read the main guide alongside using it.
+- **Some skills reference Tom's vault structure** (e.g. paths like `~/VAULT_PATH/Business/Mother London Engagement.md`). These are illustrative. Adapt the paths and client names to your own vault during setup.

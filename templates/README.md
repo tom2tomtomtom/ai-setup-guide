@@ -4,7 +4,7 @@ Starter files for your vault. Copy these into your own vault folder, customise t
 
 ## Files in this directory
 
-- `claude-md-template.md`, drop into your vault root as `CLAUDE.md`. Defines who you are, your voice rules, your never-dos, and your file structure for any AI working in your vault.
+- `claude-md-template.md`: drop into your vault root as `CLAUDE.md`. Defines who you are, your voice rules, your never-dos, and your file structure for any AI working in your vault.
 - `vault-structure/`, empty folder skeleton showing the recommended vault layout. Copy the folder names into your own vault.
 
 ## How to use these
