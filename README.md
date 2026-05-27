@@ -8,6 +8,10 @@ audience: anyone setting up AI from scratch through to full operator level
 
 # AI Setup Guide: Beginner to Master
 
+> ### 🟠 Not a developer? You do not need to be here.
+>
+> This page is the source. For a friendly guided walkthrough that holds your hand step by step, go to **[setup.aiden.services](https://setup.aiden.services)** instead. Free, no signup, finishes in an evening.
+
 A complete guide for setting up AI the way I do, written so a new user can start at zero and climb the ladder to where I am now. Skip nothing. Each level assumes the previous one is in place. By the end you should have a stack that does real work for you, not a chat window you forget about.
 
 If you read one section to know whether this is worth your time, read Level 0. Everything else is implementation.
@@ -19,6 +23,7 @@ If you read one section to know whether this is worth your time, read Level 0. E
 - **`portable-setup/`**: my Claude Code environment as a ready-to-clone bundle (89 skills, 57 commands, 8 review agents) plus a CLAUDE.md template
 - **`templates/`**: vault folder skeleton and starter CLAUDE.md
 - **`reference/`**: canonical Claude ecosystem inventory and MCP server detail
+- **`web/`**: the source for the guided setup wizard at setup.aiden.services. Run locally with `cd web && npm install && npm run dev`
 - **`CHANGELOG.md`**: version history
 
 License: CC BY 4.0. Fork it, adapt it, ship your own version.
