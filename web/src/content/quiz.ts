@@ -67,9 +67,9 @@ export const QUIZ_QUESTIONS: QuizQuestion[] = [
     title: 'Have you ever had a real back-and-forth with an AI assistant?',
     options: [
       { value: 0, label: 'Never', sublabel: 'I have not really used one' },
-      { value: 1, label: 'Tried ChatGPT once or twice' },
+      { value: 1, label: 'Tried it once or twice' },
       { value: 2, label: 'I use one most weeks' },
-      { value: 3, label: 'Every day, multiple tools' },
+      { value: 3, label: 'Every day, in my work' },
     ],
   },
   {
@@ -100,10 +100,10 @@ export const QUIZ_QUESTIONS: QuizQuestion[] = [
     title: 'Are you currently paying for any AI?',
     help: 'Free tiers are fine to start, but you will hit limits within a week.',
     options: [
-      { value: 0, label: 'No, only free tiers' },
-      { value: 1, label: 'ChatGPT Plus or similar' },
-      { value: 2, label: 'Claude Pro or Max' },
-      { value: 3, label: 'Multiple paid plans' },
+      { value: 0, label: 'No, free tier only' },
+      { value: 1, label: 'Claude Pro' },
+      { value: 2, label: 'Claude Max' },
+      { value: 3, label: 'Claude Max plus API usage' },
     ],
   },
   {
@@ -120,11 +120,12 @@ export const QUIZ_QUESTIONS: QuizQuestion[] = [
   {
     id: 'triedClaudeCode',
     type: 'scored',
-    title: 'Have you ever installed Claude Code, Codex, or Cursor?',
+    title: 'Have you ever installed Claude Code?',
+    help: 'Claude Code is the terminal version of Claude. It runs commands, edits files, and connects to your apps.',
     options: [
       { value: 0, label: 'No' },
       { value: 1, label: 'Tried once, did not stick' },
-      { value: 2, label: 'Yes, I am using one now' },
+      { value: 2, label: 'Yes, I am using it now' },
     ],
   },
   {

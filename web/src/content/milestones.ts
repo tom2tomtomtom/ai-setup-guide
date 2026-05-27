@@ -55,19 +55,14 @@ This guide is built around small wins that compound. Do not architect the dream 
     estMinutes: 30,
     steps: [
       {
-        id: 'open-claude-or-chatgpt',
-        title: 'Open Claude or ChatGPT (5 min)',
-        body: `In your browser, go to one of:
+        id: 'open-claude',
+        title: 'Open Claude in your browser (5 min)',
+        body: `Go to **[claude.ai](https://claude.ai)** in your browser. Sign up with your email. The free tier is enough for today. You can upgrade later.
 
-- **claude.ai** (Anthropic)
-- **chatgpt.com** (OpenAI)
-
-Sign up with your email. The free tier is enough for today. You can upgrade later.
-
-If you genuinely cannot decide, pick **Claude**. The writing tends to be sharper.`,
+This guide is Claude-only. Anthropic's writing quality, memory, and integrations are what make the rest of the stack work. Pick one tool and learn it deeply.`,
         estMinutes: 5,
         checklist: [
-          { id: 'signed-up', label: 'I have signed up and I am logged in' },
+          { id: 'signed-up', label: 'I have signed up at claude.ai and I am logged in' },
         ],
       },
       {
@@ -193,67 +188,422 @@ The rule: default Sonnet. Switch to Opus when the task needs real judgement. Use
   {
     id: 'core-features',
     number: 4,
-    title: 'Core Features',
-    oneLiner: 'Build your first Project, try sub-agents, seed your memory.',
+    title: 'Become Good at Claude',
+    oneLiner: 'Install every surface and learn every feature with hands-on examples.',
     prereqs: ['know-claude'],
-    estMinutes: 45,
+    estMinutes: 180,
     steps: [
       {
-        id: 'build-personal-voice-project',
-        title: 'Build your Personal Voice project',
-        body: `In Claude (Pro), click **Projects** in the sidebar. Create a new one called **Personal Voice**.
+        id: 'install-claude-desktop',
+        title: 'Install Claude Desktop and pin it',
+        body: `Go to **[claude.ai/download](https://claude.ai/download)** and install Claude Desktop for your operating system. Mac and Windows both supported.
 
-In the project's custom instructions, paste your "who I am" file from Day 1. Then upload 5 samples of your past writing: emails, posts, drafts. Anything that sounds like you.
+After installing:
 
-From now on, when you need something written in your voice, open the Personal Voice project and ask there. Every reply will be drafted in your tone.`,
+1. Open Claude Desktop. Sign in with the same account as the web.
+2. **Mac**: drag the Claude icon to your Dock. Right-click → Options → Keep in Dock.
+3. **Windows**: right-click the taskbar icon → Pin to taskbar.
+4. Set a global keyboard shortcut to open it. Mac: System Settings → Keyboard → Keyboard Shortcuts → App Shortcuts → add one for "Claude". Windows: right-click the shortcut → Properties → Shortcut key.
+
+**Why this matters**: Claude Desktop has the same brain as the web but feels integrated. You can drop screenshots, paste images, drag in PDFs, and call it without opening a browser tab. From now on, Desktop is your daily home for Claude.`,
+        estMinutes: 8,
+        checklist: [
+          { id: 'desktop-installed', label: 'Claude Desktop is installed and signed in' },
+          { id: 'desktop-pinned', label: 'Pinned to Dock or taskbar' },
+          { id: 'desktop-shortcut', label: 'Global keyboard shortcut set (optional but worth it)' },
+        ],
+      },
+      {
+        id: 'install-claude-mobile-chrome',
+        title: 'Install Claude on mobile and Chrome',
+        body: `Two more surfaces, ten minutes total.
+
+**Claude on mobile** (iOS or Android): search "Claude" in the App Store or Play Store, install, sign in with the same account.
+
+What mobile is best for:
+- **Voice capture**: tap the mic, talk for a minute, get a structured response.
+- **Photo input**: take a photo of a whiteboard, a menu, a contract, a sign. Claude reads it.
+- **Quick decisions on the move**: "Help me decide between X and Y given my priorities."
+- **Continuing chats from desktop**: any conversation syncs across surfaces.
+
+**Claude Chrome extension** (early access at the time of writing): if available in your region, install from the Chrome Web Store. The extension lets Claude:
+- Read the current web page without you copying and pasting
+- Summarise long articles or research papers
+- Pull structured data from a page (companies, prices, dates)
+- Suggest replies inside Gmail and other web apps
+
+If the extension is not yet available where you are, skip and come back later. It's not blocking.`,
+        estMinutes: 10,
+        checklist: [
+          { id: 'mobile-installed', label: 'Claude mobile app installed and signed in' },
+          { id: 'voice-tried', label: 'I tried voice capture at least once' },
+          { id: 'chrome-installed', label: 'Claude Chrome extension installed (if available)' },
+        ],
+      },
+      {
+        id: 'master-chats',
+        title: 'Master Chats: when fresh, when to continue',
+        body: `A new chat starts fresh. A continued chat keeps context. Choose wisely.
+
+**Start a fresh chat when**:
+- The topic is unrelated to what came before
+- The previous chat got long and Claude started missing details
+- You want to test a clean prompt without conversation drift
+
+**Continue an existing chat when**:
+- You're iterating on the same piece of work (a draft, a plan, a strategy)
+- You've built useful context Claude is referring back to
+- You're refining an Artifact across multiple turns
+
+**Six chat patterns worth using today**:
+
+1. **The first-pass draft**: paste raw notes or a brief, ask "draft this in my voice". Iterate.
+2. **The pressure test**: paste your plan, ask "what's the weakest assumption here? Steelman three objections."
+3. **The decision matrix**: describe the decision, ask Claude to lay out the options as a table with criteria you care about.
+4. **The thinking partner**: "I'm trying to decide whether to [X]. Help me think through it. Ask me one question at a time."
+5. **The summariser**: paste a long transcript or article, ask for the takeaways in five bullets plus the three questions it raises.
+6. **The translator**: take something written for one audience, ask Claude to rewrite it for another (technical to plain, formal to casual, long to short).
+
+Run at least three of these today against real work. The point is muscle memory.`,
         estMinutes: 15,
         checklist: [
-          { id: 'project-created', label: 'Personal Voice project is set up with my writing samples' },
-          { id: 'tested-draft', label: 'I tested it on one real draft' },
+          { id: 'tried-three-patterns', label: 'I ran at least three chat patterns against real work' },
         ],
       },
       {
-        id: 'try-research',
-        title: 'Try Research',
-        body: `Pick a question you would normally open ten tabs to answer. Ask Claude's Research mode.
+        id: 'projects-personal-voice',
+        title: 'Build your first Project: Personal Voice',
+        body: `Projects are the single biggest unlock when you upgrade to Pro. Each Project has its own instructions, uploaded reference files, and a chat history scoped to that context.
 
-Examples:
-- "What has changed in [my industry] in the last 90 days that I should know?"
-- "Find five companies similar to mine that have raised in the last year. What is their go-to-market?"
-- "Find the three most credible critiques of [methodology]. Steelman each one."
+**Build Personal Voice now**:
 
-Research takes 2-5 minutes. It searches the web, reads sources, cites everything. It replaces an hour of tab-juggling.`,
-        estMinutes: 10,
+1. In Claude (web or desktop), click **Projects** in the sidebar. Click **New project**.
+2. Name it **Personal Voice**.
+3. In **Custom instructions**, paste this and edit the brackets:
+
+\`\`\`
+You are my writing partner. Every reply must sound like me.
+
+About me: [your name, role, business in two sentences]
+Voice: direct, plain English, no jargon, no em-dashes
+Banned phrases: leverage, unlock, best-in-class, ladder up, north star
+Format: short paragraphs, no headings unless I ask for them
+
+Process for any draft request:
+1. Ask me one clarifying question if the audience or goal is unclear
+2. Draft in my voice
+3. After the draft, tell me which line you're least sure about so I can rewrite it
+\`\`\`
+
+4. **Upload 5 samples** of your past writing: emails, posts, internal memos, anything that sounds like you. Use **Project files** → **Upload**.
+5. Test it. Open a chat inside the Project, paste an email you need to reply to, and ask for a draft.
+
+From now on, anything that should sound like you starts here.`,
+        estMinutes: 15,
         checklist: [
-          { id: 'research-done', label: 'I ran one Research query and kept the output' },
+          { id: 'voice-project-instructions', label: 'Custom instructions written and saved' },
+          { id: 'voice-project-samples', label: '5 writing samples uploaded' },
+          { id: 'voice-project-tested', label: 'I tested it on a real draft' },
         ],
       },
       {
-        id: 'seed-memory',
-        title: 'Seed Claude memory',
-        body: `Tell Claude to remember some stable facts about you. Open any chat and say:
+        id: 'projects-four-more',
+        title: 'Build 4 more starter Projects',
+        body: `Build these one at a time over the next few days. Each one earns its keep within a week.
 
-> "Remember the following about me, and use these in future conversations: time zone is [X], primary business is [Y], my partner is [Z], I never want you to use em-dashes, my top three priorities right now are [A], [B], [C]."
+**Daily Operator**
+- Instructions: "You are my morning operator. Read my calendar (via MCP), check my inbox for anything urgent, then tell me my three priorities for today in plain language. Push back if my priorities look reactive."
+- Files: your CLAUDE.md, current quarter goals, list of active clients with status
 
-Add anything that is stable enough to be true for months. Skip anything project-specific, that belongs in your vault later.`,
-        estMinutes: 10,
+**Research Companion**
+- Instructions: "You are my research analyst. Every output follows this template: TL;DR (3 lines) / Background / Key findings (numbered) / Open questions / Sources. Cite everything. Flag anything you're unsure about."
+- Files: any past research dossiers you've written, your industry context, common analyst frameworks you use
+
+**Client [Name]** (build one per active client)
+- Instructions: "You are my account lead for [client]. Reply to anything in their tone, with their context, and following the principles we agreed: [paste]. Never invent metrics or commitments."
+- Files: their brief, voice samples (their writing not yours), scope, project status, key people
+
+**Inbox Coach**
+- Instructions: "You triage forwarded emails. For each, tell me: 1) the ask in one sentence 2) the urgency (now / today / this week / can wait) 3) a draft reply in my voice 4) any commitment I'd be making by sending it."
+- Files: your CLAUDE.md, your common reply templates, your standing rules (e.g. "never agree to free pitches")
+
+Build these as you need them, not all at once. One a day is fine.`,
+        estMinutes: 30,
         checklist: [
-          { id: 'memory-seeded', label: 'I have seeded at least 5 stable facts in Claude memory' },
+          { id: 'daily-operator', label: 'Daily Operator project built' },
+          { id: 'research-companion', label: 'Research Companion project built' },
+          { id: 'client-project', label: 'At least one Client project built' },
+          { id: 'inbox-coach', label: 'Inbox Coach project built' },
         ],
       },
       {
-        id: 'try-an-artifact',
-        title: 'Try an Artifact',
-        body: `Ask Claude to make something visual or structured. Examples:
+        id: 'skills-install-and-write',
+        title: 'Skills: install and write your first',
+        body: `A skill is a small instruction set Claude loads on demand. They live mostly inside Claude Code (the terminal version) but the web is starting to support them too.
 
-- "Build me a one-page client status summary template I can reuse weekly."
-- "Make a simple ROI calculator: three inputs, three projected outcomes."
-- "Draw me an architecture diagram of my current setup in mermaid."
+**For now, in the web**: open any chat and try the slash menu. Type \`/\` and see what's available. Anthropic ships starter skills like \`/summarise\` and \`/brainstorm\`.
 
-The output renders inline in the chat. You can iterate ("make it shorter", "change the tone"), and each version is saved so you can flip between them.`,
+**Inside Claude Code** (terminal): you have access to plugin marketplaces with hundreds of skills.
+
+**Install your first 3 plugins** in Claude Code:
+
+\`\`\`
+/plugins install caveman
+/plugins install superpowers
+/plugins install supabase
+\`\`\`
+
+What they give you:
+- **caveman**: ultra-compressed code reviews and commits. The reviews are one line per issue.
+- **superpowers**: structured workflows like brainstorming, TDD, plan execution.
+- **supabase**: full Supabase agent skill set (auth, RLS, migrations) if you build with Supabase.
+
+**Write your first skill**:
+
+In Claude Code, run \`/skill-craft\` and answer the prompts. A skill is just a markdown file with a frontmatter description and instructions. Build one for the most repetitive thing you do.
+
+Example skills you might write:
+- \`email-in-my-voice\`: takes a forwarded email plus light context, drafts a reply in your tone
+- \`meeting-to-actions\`: takes notes or a transcript, returns a summary plus 3-5 action items with owners and dates
+- \`daily-plan\`: reads calendar, inbox, priorities, returns a focused plan for today
+- \`pitch-prep\`: builds a one-pager on a prospect using their public info and your sales angle
+
+The three-times rule: the third time you do something by hand, write a skill.`,
+        estMinutes: 25,
+        commands: [
+          {
+            label: 'Install three useful plugins (inside Claude Code)',
+            variants: {
+              default: '/plugins install caveman\n/plugins install superpowers\n/plugins install supabase',
+            },
+            expectedOutput:
+              'Each plugin installs and the skills become available. Type / in your next message to see new options.',
+          },
+          {
+            label: 'Bootstrap your first skill',
+            variants: {
+              default: '/skill-craft',
+            },
+            expectedOutput:
+              'Claude walks you through name, description, when-to-use, and instructions. Saves the skill to ~/.claude/skills/[name]/SKILL.md',
+          },
+        ],
+        checklist: [
+          { id: 'plugins-installed', label: 'At least 2 plugins installed' },
+          { id: 'first-skill-written', label: 'My first skill is written and saved' },
+          { id: 'first-skill-fired', label: 'I triggered the skill on a real task and it worked' },
+        ],
+      },
+      {
+        id: 'mcp-gmail',
+        title: 'Connect Gmail and try 6 prompts',
+        body: `Connecting Gmail to Claude is the single highest-leverage thing you can do for your inbox. Read access only, you stay in control of sending.
+
+**Connect it** (inside Claude Code):
+
+\`\`\`
+/mcp
+\`\`\`
+
+Pick Gmail. A browser tab opens, authorise the connection, come back. Claude can now read your inbox.
+
+**Six prompts to run today**:
+
+1. "Find every email I haven't replied to from a director-level person or higher in the last 14 days. Show sender, subject, days waiting, and a one-line summary of what they're asking."
+2. "Summarise every email from [client name] in the last 30 days into a one-page client status: open threads, decisions made, things I promised, things they promised."
+3. "Show me threads where I made a promise but haven't followed up. Group by recipient. For each, suggest a one-line nudge in my voice."
+4. "Find any emails about [topic] across all time. Build a timeline of how my thinking on this evolved."
+5. "Draft replies to the three most urgent unread emails in my inbox. Save as drafts in Gmail. Do not send."
+6. "Scan the last 90 days for any thread that smells like a sales opportunity. Surface anyone who asked about pricing, capacity, or working with me."
+
+**Privacy and discipline**:
+- Read-only by default. Drafts only when you ask. Never auto-send.
+- Revoke any time in Google account → Security → Third-party apps.
+- For Claude Pro and Max, your data is not used for training.`,
+        estMinutes: 20,
+        commands: [
+          {
+            label: 'Open the MCP menu in Claude Code',
+            variants: { default: '/mcp' },
+            expectedOutput: 'A list of available connectors. Pick Gmail. Browser tab opens, you authorise, come back to Claude.',
+          },
+        ],
+        checklist: [
+          { id: 'gmail-connected', label: 'Gmail connected via MCP' },
+          { id: 'ran-three-gmail', label: 'I ran at least 3 of the 6 prompts and got useful output' },
+        ],
+      },
+      {
+        id: 'mcp-calendar-drive',
+        title: 'Connect Calendar and Drive',
+        body: `Same pattern as Gmail. Run \`/mcp\` and add Google Calendar and Google Drive.
+
+**Once Calendar is connected, try these**:
+
+1. "What do my next two weeks look like? Where are the gaps for deep work?"
+2. "Find every meeting with [person] in the last six months. For each, summarise what we discussed and any commitments either side made."
+3. "Suggest five 90-minute windows next week for focused build time, avoiding back-to-back meetings."
+4. "Which meetings this week am I going into without enough context? For each, what should I prep?"
+5. "Tomorrow's first meeting: pull together everything you can from my inbox, drive, and past calendar entries to brief me."
+
+**Once Drive is connected**:
+
+1. "Find every document I've shared with [client] in the last 90 days."
+2. "Search Drive for documents about [topic]. Rank them by recency and relevance."
+3. "Summarise [document name] and pull out the three open questions left in the comments."
+4. "Find any strategy or planning docs I've worked on in the last quarter. Build me a one-page synthesis of what I was thinking."
+5. "Compare these two proposals (paste filenames). Where do they overlap, where do they conflict?"
+
+**The combined power**: once Gmail, Calendar, and Drive are all connected, you can ask things like "Brief me on tomorrow's 9am: pull the latest emails from this client, our last meeting notes, and any docs we've shared." That single prompt would have taken 20 minutes. Now it's 30 seconds.`,
+        estMinutes: 15,
+        checklist: [
+          { id: 'calendar-connected', label: 'Google Calendar connected' },
+          { id: 'drive-connected', label: 'Google Drive connected' },
+          { id: 'combined-brief-test', label: 'I tried a combined prompt that uses Gmail + Calendar + Drive together' },
+        ],
+      },
+      {
+        id: 'research-deep-dive',
+        title: 'Use Research like a research assistant',
+        body: `Claude's Research mode runs deep multi-source web research with citations. Available on Pro and Max. Use it instead of opening twelve tabs.
+
+**In Claude (web or desktop)**: click **Research** in the new-chat options before sending your prompt. Claude will spend 2 to 5 minutes searching, reading, and synthesising.
+
+**Six research questions worth running today**:
+
+1. "What has changed in [my industry] in the last 90 days that someone in my role should know? Group by topic. Include any new regulation, funding rounds, or technology shifts."
+2. "Find five companies similar to mine that have raised funding in the last 12 months. For each: stage, lead investor, go-to-market motion, and what their public pitch is."
+3. "Map the AI tooling landscape for [specific use case, e.g. agency operations]. Cover pricing, capability, momentum, and which tools have meaningful traction. Cite sources for any market-share claim."
+4. "What does the public footprint say about [prospect name]? Surface their last six months of public activity (talks, posts, hires, product launches). What angle would let me pitch them without sounding generic?"
+5. "Find the three most credible critiques of [methodology or framework]. Steelman each. Then tell me which critique I should take most seriously."
+6. "Trace the regulatory changes affecting [industry] in the EU, US, and AU over the last year. For each, summarise what an operator at my scale needs to know."
+
+**How to get more from Research**:
+- Be specific about format. "Group by X" or "Output as a table" works.
+- Ask for sources to be ranked by credibility, not just listed.
+- Treat the output as a starting draft, not the final answer. Verify load-bearing claims.
+
+Each Research run takes 2 to 5 minutes and replaces an hour of tab-juggling.`,
+        estMinutes: 20,
+        checklist: [
+          { id: 'research-ran', label: 'I ran at least 2 Research queries and kept the output' },
+          { id: 'research-cited', label: 'I checked one of the cited sources to validate' },
+        ],
+      },
+      {
+        id: 'coworker-subagents',
+        title: 'Trigger Coworker for parallel work',
+        body: `Coworker (Pro+) lets Claude spawn parallel sub-agents for complex tasks. You don't trigger it manually. Claude decides when a task benefits and does it. You see results stream in as small "agents working" pills.
+
+The trick is writing prompts that obviously benefit from parallelism. Once Claude sees the pattern, sub-agents fire.
+
+**Five prompts that reliably trigger Coworker**:
+
+1. "Compare these five competitors against my product, one agent per competitor: [list 5 with URLs]. For each, return: positioning, pricing, three product strengths, three weaknesses, who they win against."
+2. "Critique this strategy from three angles in parallel: financial (will the math work), brand (will it dilute), operational (can we deliver). Each angle should be its own dedicated analysis."
+3. "Read these three meeting transcripts (paste them). Have one agent extract decisions, one extract open questions, one extract any contradictions between sessions. Then synthesise."
+4. "Research this prospect from five stakeholder perspectives in parallel: customer, employee, regulator, investor, competitor. Each perspective should give me a different angle on what they care about and where they're vulnerable."
+5. "Take this article (paste) and produce three drafts in parallel: a LinkedIn post in my voice, a 60-second video script in plain language, a two-minute spoken version for a podcast intro. Optimise each for its format."
+
+**What to look for**:
+- Multiple small "Working on X" pills appearing in the chat as the response builds
+- Each sub-agent's findings labelled separately, then a synthesis at the end
+- Total response time still fast because work runs in parallel, not in series
+
+If Coworker doesn't fire, your prompt probably looks like one task. Rewrite to make the parallelism explicit (one agent per X).`,
+        estMinutes: 15,
+        checklist: [
+          { id: 'coworker-fired', label: 'I saw sub-agents fire in at least one response' },
+          { id: 'coworker-output-used', label: 'I used the parallel output for real work' },
+        ],
+      },
+      {
+        id: 'artifacts-templates',
+        title: 'Build 5 reusable Artifact templates',
+        body: `Artifacts are inline rendered outputs you can iterate on. Code blocks, documents, diagrams, simple interactive prototypes. Each iteration creates a new version you can flip between.
+
+**Build these five today or this week. Save each one (Project file) so you can reuse them.**
+
+1. **One-page client status template**. Prompt: "Build me a one-page client status markdown template I can fill in weekly. Sections: this week's progress, blockers, decisions needed, next week's priorities, risks. Keep it tight, no fluff."
+
+2. **ROI calculator** (interactive HTML/JS Artifact). Prompt: "Build me a simple ROI calculator as an interactive Artifact. Three inputs: monthly cost, hours saved per week, hourly rate. Output: monthly net benefit and payback period. Show the math."
+
+3. **Architecture diagram in Mermaid**. Prompt: "Draw a mermaid diagram of my current AI setup: my vault on the left, Claude Code in the middle, MCP connections to Gmail/Calendar/Drive on the right. Label everything. Use the flowchart syntax."
+
+4. **Pitch one-pager template**. Prompt: "Generate a one-page pitch deck template in markdown I can paste into Google Slides. Sections: problem, insight, proposed approach, why us, what success looks like, what we need from you. Each section is 2-3 lines max."
+
+5. **Weekly review prompt** (saved Artifact). Prompt: "Write me a weekly review prompt I can paste into Claude every Sunday night. It should ask me five questions about the week (what worked, what didn't, what got dropped, what I learned, what I'm carrying into next week), then summarise my answers as a reflection note."
+
+**Iterate in place**: after each Artifact, say "make it shorter", "change the tone to more formal", "add a section on risks". Each tweak creates a new version. Flip between versions with the buttons in the Artifact panel.
+
+Pin the ones you'll reuse weekly. Treat them as your templates.`,
+        estMinutes: 30,
+        checklist: [
+          { id: 'artifact-status-template', label: 'Client status template built' },
+          { id: 'artifact-roi-calc', label: 'ROI calculator built' },
+          { id: 'artifact-diagram', label: 'Mermaid architecture diagram built' },
+          { id: 'artifact-pitch-template', label: 'Pitch one-pager template built' },
+          { id: 'artifact-weekly-review', label: 'Weekly review prompt saved' },
+        ],
+      },
+      {
+        id: 'memory-seed',
+        title: 'Seed Memory with 12 stable facts',
+        body: `Claude has cross-session memory. Tell it stable facts about you and they surface in future chats without you re-stating context.
+
+**How to seed**: open any Claude chat and say "Remember the following about me, and use these in future conversations:" then list facts.
+
+**The 12 to seed today** (edit to match you):
+
+1. Time zone and country (e.g. "Melbourne, Australia, UTC+10/+11")
+2. Role and primary business (one sentence each)
+3. Spouse, partner, kids (first names so Claude doesn't have to ask)
+4. Dietary preferences (useful for travel and restaurant prompts)
+5. Voice rules: never use em-dashes, never use agency-speak, prefer short sentences
+6. Banned words specific to your industry
+7. Your top three priorities for the current quarter
+8. Active client list (just names, so Claude knows who's who when you mention them)
+9. Usual working hours and protected blocks (e.g. "no meetings before 10am Mondays")
+10. Your default day rate and pricing (if you consult)
+11. The frameworks you actively use (e.g. "I think in jobs-to-be-done, six dimensions of strategy, build-first-sell-second")
+12. The frameworks you actively avoid (e.g. "I do not use OKRs, do not suggest them")
+
+**Memory hygiene**:
+- Memory is for stable facts. Don't put project state in here, that belongs in your vault.
+- Review memory monthly. Delete anything stale.
+- Anything you correct twice should become a memory entry instead of a recurring correction.
+
+Test it: start a fresh chat the next day, ask "what do you know about me?" Claude should rattle off the seeded facts without prompting.`,
         estMinutes: 10,
         checklist: [
-          { id: 'artifact-iterated', label: 'I built and iterated on one artifact' },
+          { id: 'memory-12-seeded', label: '12 stable facts seeded in Claude memory' },
+          { id: 'memory-tested-fresh-chat', label: 'I tested in a fresh chat and Claude remembered' },
+        ],
+      },
+      {
+        id: 'daily-claude-routine',
+        title: 'Your daily Claude routine',
+        body: `By now you have: Desktop, mobile, Chrome (where available), Projects, Skills, MCP connections, Research, Coworker, Artifacts, Memory. The trick is using them as one workflow, not nine separate features.
+
+**A worked daily routine**:
+
+**Morning (10 minutes)**: open Daily Operator project on Claude Desktop. Ask "What should I focus on today?" It reads your calendar, recent emails, and your priorities, returns a tight plan. Capture any overnight ideas you had via mobile voice notes.
+
+**Mid-morning (when you need to write something)**: switch to the Personal Voice project. Draft in Claude. Edit in your usual tool. The first pass takes a quarter of the time.
+
+**Lunch (5 minutes)**: scan inbox via Inbox Coach project. Triage the three most urgent threads. Save drafts for the high-stakes ones, send the quick ones yourself from Gmail.
+
+**Afternoon (when you hit a research question)**: open Research Companion project or use Research mode directly. Don't go to Google. Let Claude do the multi-tab work while you keep building.
+
+**End of day (5 minutes)**: open Claude Desktop, paste "What did I commit to today that I haven't done yet?" Claude reads your sent mail and drafts a quick follow-up list for tomorrow.
+
+**Weekend (15 minutes)**: run the Weekly Review Artifact you built. Reflect on what worked, what didn't, what to carry forward.
+
+**The discipline**: don't add more tools. Add more depth to the ones you have. Your Personal Voice project gets better every week as you upload more samples. Your skills library grows by one or two per week. Your memory accumulates. After 90 days the system is unrecognisable from where you started.`,
+        estMinutes: 10,
+        checklist: [
+          { id: 'morning-routine', label: 'I have a morning Claude routine I can stick to' },
+          { id: 'evening-routine', label: 'I have an end-of-day Claude routine I can stick to' },
         ],
       },
     ],
@@ -488,9 +838,9 @@ Iterate until you would actually reuse it.`,
       {
         id: 'pick-and-commit',
         title: 'Pick your main AI and commit',
-        body: `Pick one of Claude or ChatGPT as your daily driver. Commit to it for 90 days. Do not bounce between them in week one comparing outputs.
+        body: `Commit to Claude as your daily driver for 90 days. Do not bounce between tools comparing outputs in week one. You'll lose more time evaluating than you'll save using.
 
-If you genuinely cannot decide, pick Claude.`,
+Pick Claude, use it for everything, build your context and skills around it. Re-evaluate after 90 days if you want.`,
         estMinutes: 5,
         checklist: [{ id: 'picked', label: 'I have picked my main AI for 90 days' }],
       },
@@ -543,7 +893,7 @@ The vault is where Level 2 and beyond live. Get the habit started now.`,
         title: 'Pre-flight check',
         body: `Before you paste the prompt, confirm:
 
-- Claude Code (or Codex) is installed and you can run \`claude\` in a terminal
+- Claude Code is installed and you can run \`claude\` in a terminal
 - Gmail, Calendar, and Drive MCP servers are connected (\`/mcp\` inside Claude Code shows them green)
 - You have Obsidian installed (or you are OK with plain folders)
 
