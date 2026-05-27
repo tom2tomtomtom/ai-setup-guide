@@ -21,7 +21,17 @@ Plus a template `CLAUDE.md.template` at this folder's root.
 
 - **8 review agents**: `art-director`, `biz-ceo`, `biz-cfo`, `biz-cmo`, `biz-cpo`, `biz-cro`, `biz-analyst`, `strategist`. Use these for multi-perspective critique of products, copy, and strategy.
 - **58 slash commands**: the `/build`, `/spec`, `/execute`, `/analyze` workflow plus 22 vault commands, the creative pipeline (`/brain-chat`, `/creative-strategy`, `/full-campaign`, `/culture-scan`), image and video commands, and operator shortcuts (`/setup`, `/help`, `/plan`).
-- **95 skills**: the working library minus the proprietary and client-specific items (see exclusion list below). Covers vault operations, creative strategy, coding workflows, framework patterns, design systems, deployment, debugging, and meta-tools.
+- **86 skills**: the working library minus proprietary, client-specific, and plugin-managed items. Covers vault operations, creative strategy, coding workflows, framework patterns, design systems, deployment, debugging, and meta-tools.
+
+## Plugin-managed skills (install separately)
+
+Some skills in Tom's setup are managed by official Anthropic plugins, not shipped as standalone files. Install these plugins to add them to your environment:
+
+- **`caveman` plugin**: adds `caveman`, `caveman-commit`, `caveman-review`, `compress` (ultra-compressed reviews, commits, and memory file compression)
+- **`supabase` plugin**: adds `supabase` and `supabase-postgres-best-practices` (official Supabase agent skills)
+- **`stripe` plugin**: adds `stripe-best-practices`, `stripe-projects`, `upgrade-stripe` (official Stripe integration skills)
+
+Install via your Claude Code plugin marketplace or with `claude plugins install <plugin-name>`. Tom's reference list of weekly-used skills (see the main `README.md`) assumes these are installed.
 - **Template `CLAUDE.md`**: fill-in-the-blanks starter for your own vault root.
 
 ## Excluded (and why)
