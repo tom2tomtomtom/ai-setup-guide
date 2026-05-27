@@ -111,6 +111,17 @@ export function PromptDeploy() {
           </ul>
         </div>
 
+        <div className="card p-6 mt-6">
+          <h2 className="font-semibold mb-2">Finished? Generate your stack cheatsheet.</h2>
+          <p className="text-sm text-ink-muted mb-4">
+            A one-page markdown summary of what you built, your daily routine, three skills to write next, and a Sunday-night review prompt. Save it, drop it in your vault, refresh it every 90 days.
+          </p>
+          <Link to="/cheatsheet" className="btn-primary w-full justify-center">
+            <Sparkles size={16} />
+            Open my cheatsheet
+          </Link>
+        </div>
+
         <div className="mt-8 text-center">
           <Link to="/wizard/self-onboarding-prompt" className="btn-ghost">
             Back to the milestone

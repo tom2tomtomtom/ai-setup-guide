@@ -21,17 +21,16 @@ export function Landing() {
 
   return (
     <Shell>
-      <section className="mx-auto max-w-3xl px-4 sm:px-6 lg:px-8 pt-16 pb-12 text-center">
+      <section className="mx-auto max-w-3xl px-4 sm:px-6 lg:px-8 pt-16 pb-10 text-center">
         <div className="inline-flex items-center gap-2 rounded-full bg-accent-subtle px-3 py-1 text-xs font-medium text-accent-dark mb-6">
           <Sparkles size={14} />
-          A guided setup for your personal AI stack
+          No terminal needed for Day 1
         </div>
         <h1 className="text-4xl sm:text-5xl font-semibold tracking-tight mb-5">
-          Set up your AI. Step by step.
+          Clone an operator's Claude stack.
         </h1>
         <p className="text-lg sm:text-xl text-ink-muted leading-relaxed max-w-2xl mx-auto">
-          A friendly walkthrough from "I just got an AI account" to "my Gmail, calendar, and notes
-          are powering a real assistant on my computer." Built by Tom Hyde. Free. No signup.
+          A guided walkthrough that drops you into Tom Hyde's actual working setup. 88 skills, 57 commands, 8 review agents, the lot. Free. No signup. Done in an evening.
         </p>
         <div className="mt-8 flex flex-wrap gap-3 justify-center">
           <Link to="/quiz" className="btn-primary text-lg px-6 py-4">
@@ -39,12 +38,23 @@ export function Landing() {
             <ArrowRight size={18} />
           </Link>
           <Link to="/wizard/mindset" className="btn-secondary">
-            I know what I'm doing, just take me in
+            Skip the quiz, show me the milestones
           </Link>
+        </div>
+        <p className="text-xs text-ink-subtle mt-5">
+          For Day 1 you only need a browser. Terminal arrives later, when you're ready.
+        </p>
+      </section>
+
+      <section className="mx-auto max-w-3xl px-4 sm:px-6 lg:px-8 pb-12">
+        <div className="grid grid-cols-3 gap-3 sm:gap-4 text-center">
+          <Stat number="88" label="curated skills" />
+          <Stat number="57" label="slash commands" />
+          <Stat number="8" label="review agents" />
         </div>
       </section>
 
-      <section className="mx-auto max-w-5xl px-4 sm:px-6 lg:px-8 pb-20 grid sm:grid-cols-3 gap-4">
+      <section className="mx-auto max-w-5xl px-4 sm:px-6 lg:px-8 pb-16 grid sm:grid-cols-3 gap-4">
         <Feature
           icon={<Compass size={20} />}
           title="We meet you where you are"
@@ -53,12 +63,12 @@ export function Landing() {
         <Feature
           icon={<Wrench size={20} />}
           title="Step by step, with copy buttons"
-          body="Every command has a one-click copy. Every step tells you what success looks like, and what to do when it doesn't."
+          body="Every command has a one-click copy. Every step tells you what success looks like and what to do when it doesn't."
         />
         <Feature
           icon={<Sparkles size={20} />}
           title="Resume any time"
-          body="Your progress lives in your browser. Close the tab, open it tomorrow, pick up where you left off."
+          body="Progress lives in your browser. Close the tab, open it tomorrow, pick up where you left off."
         />
       </section>
 
@@ -125,6 +135,15 @@ function Feature({ icon, title, body }: { icon: React.ReactNode; title: string; 
       </div>
       <h3 className="font-semibold mb-1">{title}</h3>
       <p className="text-sm text-ink-muted leading-relaxed">{body}</p>
+    </div>
+  )
+}
+
+function Stat({ number, label }: { number: string; label: string }) {
+  return (
+    <div className="card py-5 px-3">
+      <div className="text-3xl sm:text-4xl font-semibold tracking-tight text-ink">{number}</div>
+      <div className="text-xs sm:text-sm text-ink-muted mt-1">{label}</div>
     </div>
   )
 }
