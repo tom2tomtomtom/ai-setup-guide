@@ -150,7 +150,7 @@ Start with the web. Add Desktop within a week so it sits next to your other apps
 - **Projects** (Pro+): persistent workspaces with their own instructions and uploaded files. The biggest unlock when you upgrade.
 - **Coworker** (Pro+): Claude spawns parallel sub-agents for complex tasks
 - **Skills**: reusable instruction sets that load on demand
-- **Connections** (MCP): Claude reads Gmail, Calendar, Drive, Slack, GitHub on your behalf
+- **Connections**: Claude reaches into your other apps. In Desktop and Web open **Settings → Connectors**. In Claude Code run the slash-mcp command. Available connectors include Gmail, Google Calendar, Google Drive, Slack, GitHub, Figma, Supabase, Context7 (documentation lookup), and more.
 - **Research** (Pro+): deep multi-source research with citations
 - **Artifacts**: code, docs, diagrams rendered inline with version history
 - **Memory**: stable facts Claude remembers across sessions`,
@@ -179,7 +179,7 @@ The rule: default Sonnet. Switch to Opus when the task needs real judgement. Use
         estMinutes: 3,
         checklist: [
           { id: 'know-surfaces', label: 'I know the five surfaces of Claude' },
-          { id: 'know-features', label: 'I know what Projects, Skills, MCP, and Research do' },
+          { id: 'know-features', label: 'I know what Projects, Skills, Connections, and Research do' },
           { id: 'know-models', label: 'I know the three models and when to use each' },
         ],
       },
@@ -312,7 +312,7 @@ From now on, anything that should sound like you starts here.`,
         body: `Build these one at a time over the next few days. Each one earns its keep within a week.
 
 **Daily Operator**
-- Instructions: "You are my morning operator. Read my calendar (via MCP), check my inbox for anything urgent, then tell me my three priorities for today in plain language. Push back if my priorities look reactive."
+- Instructions: "You are my morning operator. Read my calendar, check my inbox for anything urgent (using the Gmail and Calendar connectors), then tell me my three priorities for today in plain language. Push back if my priorities look reactive."
 - Files: your CLAUDE.md, current quarter goals, list of active clients with status
 
 **Research Companion**
@@ -395,17 +395,20 @@ The three-times rule: the third time you do something by hand, write a skill.`,
         ],
       },
       {
-        id: 'mcp-gmail',
+        id: 'connect-gmail',
         title: 'Connect Gmail and try 6 prompts',
         body: `Connecting Gmail to Claude is the single highest-leverage thing you can do for your inbox. Read access only, you stay in control of sending.
 
-**Connect it** (inside Claude Code):
+**In Claude Desktop or Web**, Connections live in settings. The exact path:
 
-\`\`\`
-/mcp
-\`\`\`
+1. Open Claude Desktop (or claude.ai in your browser).
+2. Click your profile icon (bottom-left on Web, top-right on Desktop) → **Settings**.
+3. Click **Connectors** (sometimes labelled **Connections**, sometimes under **Integrations**).
+4. Find **Gmail** in the list. Click **Connect**.
+5. A browser tab opens. Sign in with your Google account, authorise read access, come back.
+6. Gmail is now available in any chat. Try a prompt below.
 
-Pick Gmail. A browser tab opens, authorise the connection, come back. Claude can now read your inbox.
+> **In Claude Code (terminal)** the same connectors are available via the \`/mcp\` command. Same connector underneath, different surface. If you already wired Gmail via Claude Code in the Installation Quickstart, you can skip the Web/Desktop connect step. If not, do it here.
 
 **Six prompts to run today**:
 
@@ -418,25 +421,25 @@ Pick Gmail. A browser tab opens, authorise the connection, come back. Claude can
 
 **Privacy and discipline**:
 - Read-only by default. Drafts only when you ask. Never auto-send.
-- Revoke any time in Google account → Security → Third-party apps.
+- Revoke any time in Google account → Security → Third-party apps with account access.
 - For Claude Pro and Max, your data is not used for training.`,
         estMinutes: 20,
-        commands: [
-          {
-            label: 'Open the MCP menu in Claude Code',
-            variants: { default: '/mcp' },
-            expectedOutput: 'A list of available connectors. Pick Gmail. Browser tab opens, you authorise, come back to Claude.',
-          },
-        ],
         checklist: [
-          { id: 'gmail-connected', label: 'Gmail connected via MCP' },
+          { id: 'gmail-connected-web', label: 'Gmail connected in Claude Desktop or Web (Settings → Connectors)' },
           { id: 'ran-three-gmail', label: 'I ran at least 3 of the 6 prompts and got useful output' },
         ],
       },
       {
-        id: 'mcp-calendar-drive',
+        id: 'connect-calendar-drive',
         title: 'Connect Calendar and Drive',
-        body: `Same pattern as Gmail. Run \`/mcp\` and add Google Calendar and Google Drive.
+        body: `Same pattern as Gmail. Open **Settings → Connectors** in Claude Desktop or Web, then connect:
+
+- **Google Calendar** (read events, suggest meeting times)
+- **Google Drive** (read and search documents)
+
+Each one opens a browser tab, you authorise, you come back. Two minutes per connector.
+
+> If you're on Claude Code instead, run \`/mcp\` and add the same connectors there. The connectors are the same product, the access path is the only difference.
 
 **Once Calendar is connected, try these**:
 
@@ -460,6 +463,40 @@ Pick Gmail. A browser tab opens, authorise the connection, come back. Claude can
           { id: 'calendar-connected', label: 'Google Calendar connected' },
           { id: 'drive-connected', label: 'Google Drive connected' },
           { id: 'combined-brief-test', label: 'I tried a combined prompt that uses Gmail + Calendar + Drive together' },
+        ],
+      },
+      {
+        id: 'connect-the-rest',
+        title: 'Connect the rest: Slack, GitHub, Figma, Supabase, Context7',
+        body: `Gmail, Calendar, and Drive are the daily three. Add the rest as you actually need them. Each one takes about two minutes from **Settings → Connectors** in Claude Desktop or Web (or \`slash-mcp\` in Claude Code).
+
+**Context7** (always worth installing): pulls current documentation for any library, framework, SDK, or CLI tool. Try this: "Use Context7 to fetch the latest Anthropic SDK docs and write me a streaming chat example." Better than guessing from training data.
+
+**Slack**: read channels and threads, draft messages, search history. Try this: "Summarise the last two weeks of the #product channel into a one-page brief for someone returning from leave."
+
+**GitHub**: read repos, issues, PRs, file diffs. Try this: "Read the open PRs on my main repo, prioritise them by risk and review effort, and tell me which to look at first."
+
+**Figma**: read design files, copy variables, extract code-connect mappings. Try this: "Open this Figma file (paste URL), describe the design system in plain language, and suggest the Tailwind tokens that would match it."
+
+**Supabase**: list tables, run queries, apply migrations, fetch logs. Try this: "List my Supabase tables, pick the one with the most rows, and tell me about its schema and any RLS policies."
+
+**Other connectors worth knowing**:
+- **Notion**: read pages, search workspaces, write back
+- **Linear**: read issues, project state, sprint plans
+- **Stripe**: payment and subscription state (read-only in most setups)
+- **Microsoft 365**: Outlook, Teams, OneDrive (if you live in the MS ecosystem)
+- **NotebookLM**: pull research notebooks into context
+
+**Connection hygiene**:
+- Only connect what you use. Each connector grants real access.
+- Revoke unused connectors monthly. Go to Settings → Connectors → Disconnect.
+- Read-only is the default. Write actions (sending Slack, opening a PR) need explicit per-action confirmation.
+- For sensitive workspaces, use a separate Claude session or browser profile.`,
+        estMinutes: 20,
+        checklist: [
+          { id: 'context7-connected', label: 'Context7 connected (recommended)' },
+          { id: 'slack-or-github', label: 'At least one of Slack, GitHub, Figma, or Supabase connected if I actually use it' },
+          { id: 'tried-non-google-connector', label: 'I ran one prompt using a non-Google connector' },
         ],
       },
       {
@@ -528,7 +565,7 @@ If Coworker doesn't fire, your prompt probably looks like one task. Rewrite to m
 
 2. **ROI calculator** (interactive HTML/JS Artifact). Prompt: "Build me a simple ROI calculator as an interactive Artifact. Three inputs: monthly cost, hours saved per week, hourly rate. Output: monthly net benefit and payback period. Show the math."
 
-3. **Architecture diagram in Mermaid**. Prompt: "Draw a mermaid diagram of my current AI setup: my vault on the left, Claude Code in the middle, MCP connections to Gmail/Calendar/Drive on the right. Label everything. Use the flowchart syntax."
+3. **Architecture diagram in Mermaid**. Prompt: "Draw a mermaid diagram of my current AI setup: my vault on the left, Claude in the middle, Gmail/Calendar/Drive connectors on the right. Label everything. Use the flowchart syntax."
 
 4. **Pitch one-pager template**. Prompt: "Generate a one-page pitch deck template in markdown I can paste into Google Slides. Sections: problem, insight, proposed approach, why us, what success looks like, what we need from you. Each section is 2-3 lines max."
 
@@ -583,7 +620,7 @@ Test it: start a fresh chat the next day, ask "what do you know about me?" Claud
       {
         id: 'daily-claude-routine',
         title: 'Your daily Claude routine',
-        body: `By now you have: Desktop, mobile, Chrome (where available), Projects, Skills, MCP connections, Research, Coworker, Artifacts, Memory. The trick is using them as one workflow, not nine separate features.
+        body: `By now you have: Desktop, mobile, Chrome (where available), Projects, Skills, Connectors (Gmail/Calendar/Drive), Research, Coworker, Artifacts, Memory. The trick is using them as one workflow, not nine separate features.
 
 **A worked daily routine**:
 
@@ -764,7 +801,7 @@ Then pick a task from your actual workday and do it in Claude.`,
       {
         id: 'day-2-desktop-and-gmail',
         title: 'Day 2: Desktop and Gmail',
-        body: `Install Claude Desktop (Mac or Windows). Pin it. Connect Gmail via MCP. Run one inbox query.
+        body: `Install Claude Desktop (Mac or Windows). Pin it. Connect Gmail via Settings → Connectors. Run one inbox query.
 
 Try this: "Find every email I have not replied to from a director-level person or higher in the last 14 days."`,
         estMinutes: 15,
