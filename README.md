@@ -16,7 +16,7 @@ If you read one section to know whether this is worth your time, read Level 0. E
 
 - **`README.md`** (this file): the full guide
 - **`super-prompt.md`**: copy-paste prompt that bootstraps your vault from your real Gmail/Calendar/Drive in one session
-- **`portable-setup/`**: my Claude Code environment as a ready-to-clone bundle (86 skills, 57 commands, 8 review agents) plus a CLAUDE.md template
+- **`portable-setup/`**: my Claude Code environment as a ready-to-clone bundle (88 skills, 57 commands, 8 review agents) plus a CLAUDE.md template
 - **`templates/`**: vault folder skeleton and starter CLAUDE.md
 - **`reference/`**: canonical Claude ecosystem inventory and MCP server detail
 - **`CHANGELOG.md`**: version history

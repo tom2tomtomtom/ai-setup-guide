@@ -21,7 +21,7 @@ Plus a template `CLAUDE.md.template` at this folder's root.
 
 - **8 review agents**: `art-director`, `biz-ceo`, `biz-cfo`, `biz-cmo`, `biz-cpo`, `biz-cro`, `biz-analyst`, `strategist`. Use these for multi-perspective critique of products, copy, and strategy.
 - **57 slash commands**: the `/build`, `/spec`, `/execute`, `/analyze` workflow plus 22 vault commands, the creative pipeline (`/brain-chat`, `/creative-strategy`, `/full-campaign`, `/culture-scan`), image and video commands, and operator shortcuts (`/setup`, `/help`, `/plan`).
-- **86 skills**: the working library minus proprietary, client-specific, and plugin-managed items. Covers vault operations, creative strategy, coding workflows, framework patterns, design systems, deployment, debugging, and meta-tools.
+- **88 skills**: the working library minus proprietary, client-specific, and plugin-managed items. Covers vault operations, creative strategy, coding workflows, framework patterns, design systems, deployment, debugging, and meta-tools.
 
 ## Plugin-managed skills (install separately)
 
